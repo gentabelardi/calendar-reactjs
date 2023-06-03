@@ -15,13 +15,14 @@ const Calendar: React.FC<CalendarProps> = ({ onSelectDate }) => {
             if (currentMonth === 11) {
                 setCurrentYear(currentYear + 1);
             }
-            setCurrentMonth(0);
-            setNextMonth(1);
+            setCurrentMonth((currentMonth + 1) % 12);
+            setNextMonth((nextMonth + 1) % 12);
         } else {
-            setCurrentMonth(nextMonth);
+            setCurrentMonth((currentMonth + 1) % 12);
             setNextMonth((nextMonth + 1) % 12);
         }
     };
+
 
     const handlePreviousMonth = () => {
         const newCurrentMonth = (currentMonth + 11) % 12;
